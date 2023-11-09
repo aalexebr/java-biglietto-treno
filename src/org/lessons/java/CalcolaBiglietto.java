@@ -1,5 +1,6 @@
 package org.lessons.java;
 
+import java.text.DecimalFormat;
 import java.util.Scanner;
 
 public class CalcolaBiglietto {
@@ -24,9 +25,10 @@ public class CalcolaBiglietto {
 		in.close();
 		
 		int ageInt = Integer.valueOf(userAge);
-		int distanceInt = Integer.valueOf(userDistance);
+		double distanceInt = Double.valueOf(userDistance);
 		
 		double price = distanceInt * pricePerKm;
+		DecimalFormat decimalFormat = new DecimalFormat("#.##");
 		double endPrice;
 		
 		if(ageInt < 18) {
@@ -41,8 +43,9 @@ public class CalcolaBiglietto {
 			endPrice = price;
 		}
 		
-		
-		
-		System.out.print("price: "+endPrice);
+
+		String formatteValue = String.format("%.2f", endPrice);
+		String formatPrice = decimalFormat.format(endPrice);
+		System.out.print("price: "+formatteValue);
 	}
 }
